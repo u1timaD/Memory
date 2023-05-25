@@ -31,9 +31,9 @@
         <Card 
           key={item.id}
           url={item.url} 
-          alt={item.description}
-          show={visibleItems.includes(item.id)}
-          finish={finishedItems.includes(item.id)}
+          description={item.description}
+          isShow={visibleItems.includes(item.id)}
+          isFinish={finishedItems.includes(item.id)}
         />
         ));
       return (
@@ -43,19 +43,22 @@
       )
     }
 
-    function Card({ url, description, show, finish }){
-      const isShow = show ? 'card-show' : '';
-      const isFinish = finish ? 'card-finished' : '';
-      
+    function Card({ url, description, isShow, isFinish }){
+      const className = `${
+        isShow ? 'card-show' : ''
+      } ${
+        isFinish ? 'card-finished' : ''
+      }`
       return (
-        <li className={`card ${isShow} ${isFinish}`}>
-          <img src={url} width="204" height="144" alt={description}/>
+        <li className={`card ${className}`}>
+          <img src={url} 
+          width="204" 
+          height="144" 
+          alt={description}
+          />
         </li>
       );
     }
-    // TODO: создайте корневой компонент приложения
-    // TODO: создайте компонент карточки
-    // TODO: передайте данные в компоненты
   </script>
 </body>
 </html>
